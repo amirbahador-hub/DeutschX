@@ -62,6 +62,10 @@ def main() -> None:
     shutil.copy2(src, dst)
     if os.name != "nt":
         dst.chmod(0o755)
+    # On macOS, ad-hoc sign the sidecar so the app bundle's signature stays valid
+    # (an unsigned nested binary makes the whole .app read as "damaged").
+    if sys.platform == "darwin":
+        subprocess.run(["codesign", "--force", "--sign", "-", str(dst)], check=False)
     print(f"\nsidecar built: {dst}")
 
 
