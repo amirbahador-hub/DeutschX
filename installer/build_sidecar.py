@@ -51,6 +51,11 @@ def main() -> None:
         args += ["--hidden-import", h]
     for pkg in COLLECT_ALL:
         args += ["--collect-all", pkg]
+    # macOS: ad-hoc sign the collected dylibs (incl. libpython) so none carries a Team ID.
+    # That way they still load after Tauri re-signs the bundle ad-hoc — no "different Team
+    # IDs" library-validation failure, and no entitlement that Tauri would strip.
+    if sys.platform == "darwin":
+        args += ["--codesign-identity", "-"]
     args.append(str(ENTRY))
     subprocess.run(args, check=True)
 
@@ -62,10 +67,6 @@ def main() -> None:
     shutil.copy2(src, dst)
     if os.name != "nt":
         dst.chmod(0o755)
-    # On macOS, ad-hoc sign the sidecar so the app bundle's signature stays valid
-    # (an unsigned nested binary makes the whole .app read as "damaged").
-    if sys.platform == "darwin":
-        subprocess.run(["codesign", "--force", "--sign", "-", str(dst)], check=False)
     print(f"\nsidecar built: {dst}")
 
 
