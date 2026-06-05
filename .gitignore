@@ -1,0 +1,28 @@
+# Secrets & personal data — keep local, never in git
+.env
+data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+build/
+dist/
+
+# Installer build artifacts (PyInstaller)
+installer/build/
+installer/dist/
+installer/*.spec
+
+# Node / frontend
+desktop/node_modules/
+desktop/dist/
+
+# Rust / Tauri build output & bundled sidecars
+desktop/src-tauri/target/
+desktop/src-tauri/binaries/
+desktop/src-tauri/gen/
+
+# OS cruft
+.DS_Store

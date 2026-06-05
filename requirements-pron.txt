@@ -1,0 +1,6 @@
+# Optional: microphone pronunciation practice (Speak section).
+# Heavier deps + a one-time speech-model download, so they're kept separate and the
+# feature is off by default. Install with:  pip install -r requirements-pron.txt
+sounddevice>=0.4
+numpy>=1.24
+faster-whisper>=1.0

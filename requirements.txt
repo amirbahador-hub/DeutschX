@@ -1,0 +1,10 @@
+# Core dependencies — everything the app needs to teach, review, listen and study.
+# (Microphone pronunciation is optional; see requirements-pron.txt.)
+anthropic>=0.40
+python-dotenv>=1.0
+rich>=13.0
+prompt_toolkit>=3.0
+
+# Local API server (powers the desktop / web / mobile frontends)
+fastapi>=0.110
+uvicorn[standard]>=0.29
