@@ -62,7 +62,7 @@ jobs:
 
       - name: Install frontend dependencies
         working-directory: desktop
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build app & publish release
         uses: tauri-apps/tauri-action@v0
