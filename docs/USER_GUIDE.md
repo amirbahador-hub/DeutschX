@@ -86,6 +86,8 @@ microphone and a one-time download. Turn it on in **Settings → Enable micropho
 - **“Is my data private?”** Yes — everything is stored only on your computer and never uploaded.
 - **“Does it cost money?”** The tutoring uses your own Anthropic account. Normal study is a few
   cents; word studies and sentence courses are cached so you pay for each only once.
-- **“It won't open on my Mac.”** Right-click the app → **Open** → **Open** (one time only).
+- **“It says DeutschX is damaged” (Mac).** It isn't — it's just unsigned and quarantined. Open
+  **Terminal** and run `xattr -cr /Applications/DeutschX.app`, then open it. (Intel Macs may
+  instead say "unidentified developer" — there, right-click the app → **Open** → **Open**.)
 
 Viel Erfolg beim Deutschlernen! 🎉

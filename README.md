@@ -25,19 +25,23 @@ Grab the installer for your system from the **[latest release](https://github.co
 
 | Your computer | Download | How to install |
 |---|---|---|
-| **macOS** | `DeutschX_x.y.z_aarch64.dmg` (Apple Silicon) or `…_x64.dmg` (Intel) | Open the `.dmg`, drag **DeutschX** into **Applications**. **First launch:** right-click the app → **Open** → **Open** (one time — see below). |
+| **macOS** | `DeutschX_x.y.z_aarch64.dmg` (Apple Silicon) or `…_x64.dmg` (Intel) | Open the `.dmg`, drag **DeutschX** into **Applications**, then do the one-time unlock below. |
 | **Windows** | `DeutschX_x.y.z_x64-setup.exe` or `.msi` | Double-click and follow the installer. |
 | **Linux** | `DeutschX_x.y.z_amd64.AppImage` or `.deb` | AppImage: right-click → Properties → allow “executable”, then double-click. Or `sudo dpkg -i` the `.deb`. |
 
-### macOS: "DeutschX can't be opened"
-The app is **not code-signed** (signing needs a paid Apple account), so the first time you
-open it macOS asks you to confirm. This is one-time and safe:
+### macOS: "DeutschX is damaged and can't be opened"
+The app is **not code-signed** (signing needs a paid Apple account), so macOS quarantines it on
+download and shows a scary message. It's safe — you just clear the quarantine flag once:
 
-1. **Right-click** (or Control-click) the DeutschX app in Applications
-2. Choose **Open**
-3. Click **Open** again in the dialog
+1. Drag **DeutschX** into **Applications** (from the `.dmg`).
+2. Open **Terminal** (Applications → Utilities → Terminal) and paste:
+   ```bash
+   xattr -cr /Applications/DeutschX.app
+   ```
+3. Open **DeutschX** normally.
 
-After that it opens normally like any other app.
+> On Intel Macs you may instead get "unidentified developer" — there, **right-click the app →
+> Open → Open** works. The `xattr` command above fixes both cases.
 
 ---
 

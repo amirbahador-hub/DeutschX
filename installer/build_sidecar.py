@@ -62,7 +62,7 @@ def main() -> None:
     shutil.copy2(src, dst)
     if os.name != "nt":
         dst.chmod(0o755)
-    print(f"\n✓ sidecar built: {dst}")
+    print(f"\nsidecar built: {dst}")
 
 
 if __name__ == "__main__":

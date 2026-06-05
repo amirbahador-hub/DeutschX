@@ -7,6 +7,10 @@ on:
     tags: ["v*"]
   workflow_dispatch:
 
+# Allow the workflow's token to create the GitHub Release and upload assets.
+permissions:
+  contents: write
+
 jobs:
   build:
     permissions:
@@ -75,9 +79,9 @@ jobs:
           releaseBody: |
             Download the installer for your system below.
 
-            - **macOS** — `.dmg` (open it, drag DeutschX to Applications). First launch:
-              right-click the app → **Open** → **Open** (one-time, because it's unsigned).
-            - **Windows** — `.msi` or `-setup.exe`.
+            - **macOS** — `.dmg`: drag DeutschX to Applications. It's unsigned, so the first time
+              open **Terminal** and run `xattr -cr /Applications/DeutschX.app`, then launch it.
+            - **Windows** — `.msi` or `-setup.exe`. (SmartScreen: "More info" → "Run anyway".)
             - **Linux** — `.AppImage` (make it executable and run) or `.deb`.
 
             On first run, paste your own Anthropic API key. Everything stays on your machine.
